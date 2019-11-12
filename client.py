@@ -31,7 +31,7 @@ while True:
 				print("Connection closed by the server")
 				sys.exit()
 
-			username_length = int(username_length.decode('utf-8').strip())
+			username_length = int(username_header.decode('utf-8').strip())
 			username = client.recv(username_length).decode('utf-8')
 
 			message_header =  client.recv(HEADER_LENGTH)
@@ -41,7 +41,7 @@ while True:
 			print(F"{username} > {message}")
 
 	except IOError as e:
-		if e.errno != errno.EAGAIN or e.errno != errno.EWOULDBLOCK:
+		if e.errno != errno.EAGAIN and e.errno != errno.EWOULDBLOCK:
 			print('Reading error', str(e))
 			sys.exit()
 		continue
