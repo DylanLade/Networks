@@ -2,9 +2,9 @@ import socket
 import errno
 import sys
 
-HEADER_LENGTH = 10
-IP = "127.0.0.1"
-PORT = 2577
+host=socket.gethostname()
+IP = socket.gethostbyname(host)
+PORT = 14878
 
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
