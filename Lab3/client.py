@@ -21,6 +21,9 @@ while True:
 			continue
 		if message == "quit":
 			sys.exit()
+		if message == "logout":
+			client.close()
+			sys.exit()
 		else:
 			client.send(message.encode("utf-8"))
 
@@ -33,6 +36,8 @@ while True:
 
 		if not recieve:
 			continue
+		if recieve == "logout":
+			sys.exit()
 		else:
 			print(recieve.decode("utf-8"))
 
